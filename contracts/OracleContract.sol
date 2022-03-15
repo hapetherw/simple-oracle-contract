@@ -64,6 +64,7 @@ contract OracleContract is Ownable, AccessControl {
             _sumTempAmount = _sumTempAmount + temperature;
             if (_validatorIndex >= _totalValidators) {
                 _curTemperature = _sumTempAmount * 1e18 / int(_fairValidators) / 1e18;
+                _sumTempAmount = 0;
                 if (_fairValidators == _totalValidators) {
                     emit SetTemperature("All validator values are correct");
                 } else {
